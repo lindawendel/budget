@@ -14,8 +14,9 @@
     <div id="app"><h1>Budget App || Everything. Everywhere. All At Once</h1>
     <input @keyup.enter="saveExpense" type="text" v-model="expenseText">
     <ul>
-        <li v-for="expense in expenses">{{expense.label}}</li>
+        <!-- <li v-for="expense in expenses">{{expense.label}}</li> -->
         <!-- <li v-for="{label} in expenses">{{label}}</li> -->
+        <li v-for="(expense, key) in expenses" :key="expense.id">{{key}} {{expense.label}}</li>
     </ul>
 
 </div>
