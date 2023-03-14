@@ -12,11 +12,25 @@
 
 <body>
     <div id="app"><h1>Budget App || Everything. Everywhere. All At Once</h1>
-    <input @keyup.enter="saveExpense" type="text" v-model="expenseText">
-    <ul>
-        <!-- <li v-for="expense in expenses">{{expense.label}}</li> -->
+    <input @keyup.enter="saveExpense" type="number" placeholder="Enter Amount" 
+    v-model.number ="newExpense">
+
+    <!-- Types out what you have written in the form, directly to the page -->
+        {{newExpense}}
+
+        <!-- <label><input type="radio" v-model="newInputType" value="income">Income</label>
+        <label><input type="radio" v-model="newInputType" value="expense">Expense</label> -->
+    
+    <select v-model="newInputType">
+        <option value="income">Income</option>
+        <option value="expense">Expense</option>
+    </select>
+    
+        <p> {{newExpense}} {{newInputType}}</p>
+        <ul>
+        <li v-for="expense in expenses">{{expense.label}}</li>
         <!-- <li v-for="{label} in expenses">{{label}}</li> -->
-        <li v-for="(expense, key) in expenses" :key="expense.id">{{key}} {{expense.label}}</li>
+        <!-- <li v-for="(expense, key) in expenses" :key="expense.id">{{key}} {{expense.label}}</li> -->
     </ul>
 
 </div>
