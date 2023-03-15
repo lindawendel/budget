@@ -2,18 +2,18 @@ const test = Vue.createApp({
     data() {
         return {
 
+            newInput: '',
+
+            // newInputType: 'inputObject'
+
+            //newInputType: 'inputObject',
+
             // Objects
-            expenses: [
-                {id: 1, label: 10},
-                {id: 2, label: 20},
-                {id: 3, label: 30}
+            inputs: [
+                { id: 1, label: 10, expense: true, income: false },
+                { id: 2, label: 20, expense: false, income: false },
+                { id: 3, label: 30, expense: true, income:false }
             ],
-
-            newExpense: '',
-
-            // newInputType: 'expense'
-
-            newInputType: 'expense'
 
             // expenses: {
             //   'expense-1':  {id: 1, label: "10"},
@@ -22,5 +22,15 @@ const test = Vue.createApp({
             // }
 
         }
+
+    },
+
+    methods: {
+        saveInput() {
+
+            this.inputs.push({ id: this.inputs.length + 1, label: this.newInput })
+            this.newInput = ""
+        }
     }
+    
 }).mount('#app');

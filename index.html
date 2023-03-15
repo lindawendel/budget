@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -11,28 +12,38 @@
 </head>
 
 <body>
-    <div id="app"><h1>Budget App || Everything. Everywhere. All At Once</h1>
-    <input @keyup.enter="saveExpense" type="number" placeholder="Enter Amount" 
-    v-model.number ="newExpense">
+    <div id="app">
+        <h1>Budget App || Everything. Everywhere. All At Once</h1>
 
-    <!-- Types out what you have written in the form, directly to the page -->
-        {{newExpense}}
+        <div class="add-item-form">
+            <input @keyup.enter="saveInput" 
+            type="number" placeholder="Enter Amount" v-model.number="newInput">
 
+            <button 
+            v-bind:disabled="newInput.length === 0"
+            @:click="saveInput"
+                class="btn-primary">Save</button>
+
+            <!-- Types out what you have written in the form, directly to the page -->
+            <!-- {{newInput}} -->
+        
         <!-- <label><input type="radio" v-model="newInputType" value="income">Income</label>
         <label><input type="radio" v-model="newInputType" value="expense">Expense</label> -->
-    
-    <select v-model="newInputType">
-        <option value="income">Income</option>
-        <option value="expense">Expense</option>
-    </select>
-    
-        <p> {{newExpense}} {{newInputType}}</p>
-        <ul>
-        <li v-for="expense in expenses">{{expense.label}}</li>
-        <!-- <li v-for="{label} in expenses">{{label}}</li> -->
-        <!-- <li v-for="(expense, key) in expenses" :key="expense.id">{{key}} {{expense.label}}</li> -->
-    </ul>
 
-</div>
+        <select v-model="newInputType">
+            <option value="income">Income</option>
+            <option value="expense">Expense</option>
+        </select>
+    </div>
+
+        <p> {{newInput}} {{newInputType}}</p>
+        <ul>
+            <li v-for="inputObject in inputs">id: {{inputObject.id}} amount: {{inputObject.label}}</li>
+            <!-- <li v-for="{label} in inputs">{{label}}</li> -->
+            <!-- <li v-for="(input, key) in inputs" :key="input.id">{{key}} {{input.label}}</li> -->
+        </ul>
+
+    </div>
 </body>
+
 </html>
